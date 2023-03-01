@@ -173,8 +173,10 @@ def learn_decision_tree(examples: np.ndarray, attributes: np.ndarray, parent_exa
     # If all examples have the same classification
     elif np.shape(np.unique(examples[:,-1]))[0] == 1 :
         node.value = np.unique(examples[:,-1])
+    # If attributes are empty
     elif np.shape(attributes)[0] == 0 :
         node.value = plurality_value(examples)
+    # Otherwise, create a reccurvie node
     else :
         A_index = importance(attributes, examples, measure)
         A = attributes[A_index]
