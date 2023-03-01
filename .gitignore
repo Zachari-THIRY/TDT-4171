@@ -162,5 +162,11 @@ cython_debug/
 #VSCode
 **/*.code-workspace
 
+#Zip
+**/*.zip
+**/*.gz
+**/*.rar
+
+
 # MacOS specifics
 .DS_store
