@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This network was created in GeNIe Academic, which can be used for academic teaching and research purposes only -->
+<smile version="1.0" id="Network2" numsamples="10000" discsamples="10000">
+	<nodes>
+		<decision id="Computer_type">
+			<state id="Mac" />
+			<state id="PC" />
+			<state id="None" />
+			<property id="HR_LinkMode_TestCost">0</property>
+			<property id="HR_LinkMode_D5">0</property>
+			<property id="HR_LinkMode_C3">0</property>
+		</decision>
+		<cpt id="EUR_to_NOK">
+			<state id="c93" />
+			<state id="c110" />
+			<probabilities>0.7 0.3</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<cpt id="Price">
+			<state id="less2000" />
+			<state id="more2000" />
+			<parents>EUR_to_NOK Computer_type</parents>
+			<probabilities>0.05 0.95 0.8 0.2 0.5 0.5 0.01 0.99 0.7 0.3 0.45 0.55</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<cpt id="Trips">
+			<state id="Few" />
+			<state id="Many" />
+			<parents>Price</parents>
+			<probabilities>0.1 0.9 0.4 0.6</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<decision id="Find_work">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Trips Price</parents>
+			<property id="HR_LinkMode_TestCost">0</property>
+			<property id="HR_LinkMode_D5">0</property>
+			<property id="HR_LinkMode_C3">0</property>
+		</decision>
+		<cpt id="Socialising">
+			<state id="Little" />
+			<state id="Much" />
+			<parents>Trips</parents>
+			<probabilities>0.4 0.6 0.05 0.95</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<cpt id="Workflow">
+			<state id="Efficient" />
+			<state id="Poor" />
+			<parents>Computer_type</parents>
+			<probabilities>0.9 0.1 0.7 0.3 0.3 0.7</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<utility id="Academic_success">
+			<parents>Find_work Socialising Workflow</parents>
+			<utilities>0.75 0.3 0.5 0 1 0.72 0.8 0.62</utilities>
+			<property id="HR_Group">0</property>
+			<property id="HR_HTML_Desc"></property>
+			<property id="HR_Desc"></property>
+		</utility>
+		<utility id="Financial_situation">
+			<parents>Price Trips Find_work</parents>
+			<utilities>0 -0.5 -0.3 -0.7 -0.15 -0.6 -0.35 -1</utilities>
+			<property id="HR_Group">0</property>
+			<property id="HR_HTML_Desc"></property>
+			<property id="HR_Desc"></property>
+		</utility>
+		<cpt id="Finding_love">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Socialising</parents>
+			<probabilities>0.05 0.95 0.1 0.9</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<cpt id="Making_friends">
+			<state id="Few" />
+			<state id="Many" />
+			<parents>Socialising</parents>
+			<probabilities>0.2 0.8 0.02 0.98</probabilities>
+			<property id="HR_LinkMode_U6">0</property>
+			<property id="HR_LinkMode_C2">0</property>
+		</cpt>
+		<utility id="Hapiness">
+			<parents>Finding_love Making_friends Computer_type</parents>
+			<utilities>0.9 0.7 0.65 1 0.96 0.92 0.6 0.05 0 0.95 0.8 0.75</utilities>
+			<property id="HR_Group">0</property>
+			<property id="HR_HTML_Desc"></property>
+			<property id="HR_Desc"></property>
+		</utility>
+		<mau id="FInal_Utility">
+			<parents>Academic_success Financial_situation Hapiness</parents>
+			<weights>0.3333333333333333 0.2666666666666667 0.4</weights>
+			<property id="HR_Group">0</property>
+			<property id="HR_HTML_Desc"></property>
+			<property id="HR_Desc"></property>
+		</mau>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 4.0.2423.0 ACADEMIC" name="Computer Purchase">
+			<node id="Price">
+				<name>Price</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>787 352 1087 472</position>
+			</node>
+			<node id="Computer_type">
+				<name>Computer type</name>
+				<interior color="ccffcc" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="30" />
+				<position>191 357 491 477</position>
+			</node>
+			<node id="Academic_success">
+				<name>Academic success</name>
+				<interior color="ffff99" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="36" />
+				<position>740 1036 1138 1156</position>
+			</node>
+			<node id="Financial_situation">
+				<name>Financial situation</name>
+				<interior color="ffff99" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="36" />
+				<position>1215 1042 1613 1162</position>
+			</node>
+			<node id="EUR_to_NOK">
+				<name>EUR to NOK</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>787 80 1087 200</position>
+			</node>
+			<node id="Trips">
+				<name>Trips</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>1262 352 1562 472</position>
+			</node>
+			<node id="Hapiness">
+				<name>Hapiness</name>
+				<interior color="ffff99" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="36" />
+				<position>1683 1042 2081 1162</position>
+			</node>
+			<node id="Find_work">
+				<name>Find_work</name>
+				<interior color="ccffcc" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="36" />
+				<position>789 707 1089 827</position>
+			</node>
+			<node id="Socialising">
+				<name>Socialising</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>1732 352 2032 472</position>
+			</node>
+			<node id="Finding_love">
+				<name>Finding love</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>1935 690 2235 810</position>
+			</node>
+			<node id="Making_friends">
+				<name>Making friends</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>1519 698 1819 818</position>
+			</node>
+			<node id="FInal_Utility">
+				<name>FInal_Utility</name>
+				<interior color="ffff99" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="36" />
+				<position>1220 1334 1618 1454</position>
+			</node>
+			<node id="Workflow">
+				<name>Workflow</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="Arial" size="30" />
+				<position>191 722 491 842</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
